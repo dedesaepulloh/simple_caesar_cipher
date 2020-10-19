@@ -6,6 +6,13 @@ const app = express();
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.get("/", (req, res) => {
+    var data = {
+      encrypt: "",
+      decrypt: ""
+    };
+    res.render(__dirname + "/index.ejs", { data });
+});
 
 app.listen(4000);
 console.log("Server Running On Port 4000");
