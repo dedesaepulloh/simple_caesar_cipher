@@ -14,5 +14,10 @@ app.get("/", (req, res) => {
     res.render(__dirname + "/index.ejs", { data });
 });
 
+app.post("/", (req, res) => {  
+    res.render(__dirname + "/index.ejs", { data });
+  });
+
+
 app.listen(4000);
 console.log("Server Running On Port 4000");
