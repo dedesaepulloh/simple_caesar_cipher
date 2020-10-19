@@ -40,6 +40,30 @@
                         </div>
                     </div>
                 </form>
+                <br>
+                <!-- ============================================ -->
+                <!-- Decryption -->
+                <!-- ============================================ -->
+                <form action="/" method="POST">
+                  <h2>Decryption</h2>
+                  <div class="form-row">
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" id="decrypt_string" name="decrypt_string" placeholder="Paste didieunya hasil enkripsina..." />
+                    </div>
+                    <div class="col-sm-1">
+                      <input type="text" class="form-control" name="decrypt_key" placeholder="key" />
+                    </div>
+                    <div class="col">
+                      <button type="submit" class="btn btn-primary mb-2" name="submit" value="decrypt"> DECRYPT </button>
+                      <button type="submit" class="btn btn-danger mb-2" name="decrypt-reset"> RESET </button>
+                    </div>
+                  </div>
+                  <div class="form-row">
+                      <div class="col-sm-9">
+                          <input type="text" class="form-control" name="decrypt-output" value="<%= data.decrypt %>" readonly />
+                      </div>
+                  </div>
+                </form>
             </div>
         </div>
     </div>
