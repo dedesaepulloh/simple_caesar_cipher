@@ -24,6 +24,13 @@ const encrypt = (text, shift) => {
   return result;
 };
 
+const decrypt = (text, shift) => {
+    var result = "";
+    shift = (26 - shift) % 26;
+    result = encrypt(text, shift);
+    return result;
+  };
+
 app.get("/", (req, res) => {
     var data = {
       encrypt: "",
@@ -32,19 +39,30 @@ app.get("/", (req, res) => {
     res.render(__dirname + "/index.ejs", { data });
 });
 
-
-
 app.post("/", (req, res) => { 
     
     const btnSubmit = req.body.submit;
-    const key = req.body.encrypt_key * 1;
+    const encryptKey = req.body.encrypt_key * 1;
+    const decryptKey = req.body.decrypt_key * 1;
     const encryptString = req.body.encrypt_string;
+    const decryptString = req.body.decrypt_string;
 
     if (btnSubmit == "encrypt") {
         data = {
-          encrypt: encrypt(encryptString, key),
+          encrypt: encrypt(encryptString, encryptKey),
+          decrypt: ""
         };
-      } 
+      } else if (btnSubmit == "decrypt") {
+        data = {
+          encrypt: "",
+          decrypt: decrypt(decryptString, decryptKey)
+        };
+      } else {
+        data = {
+          encrypt: "",
+          decrypt: ""
+        };
+      }
     res.render(__dirname + "/index.ejs", { data });
   });
 
